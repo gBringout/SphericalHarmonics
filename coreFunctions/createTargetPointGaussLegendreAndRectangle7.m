@@ -10,7 +10,7 @@ function [rk] = createTargetPointGaussLegendreAndRectangle7(radius,degreeMax,ord
 nbrPointsPhi = orderMax*2+1;
 nbrPointsTheta = degreeMax+1;
 
-[gaussLegendreAbscissas , useless] = Gauss(nbrPointsTheta);
+[gaussLegendreAbscissas , useless] = gauss(nbrPointsTheta);
 % Phi - Alex recommand to use the left rectangle technic, to match
 % with his code
 startPhi = 0;

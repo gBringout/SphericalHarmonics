@@ -10,7 +10,7 @@ maxSphericalHarmonicsOrder = orderMax;
 nbrPointsPhi = 2*orderMax+1;
 nbrPointsTheta = degreeMax+1;
 
-[gaussLegendreAbscissas , gaussLegendreWeight] = Gauss(nbrPointsTheta);
+[gaussLegendreAbscissas , gaussLegendreWeight] = gauss(nbrPointsTheta);
 % Phi - Alex recommand to use the left rectangle technic, to match
 % with his code
 startPhi = 0;
