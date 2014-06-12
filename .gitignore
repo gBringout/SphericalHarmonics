@@ -1,0 +1,51 @@
+*.asv
+Cnm.m
+BMTPaper.m
+ComsolExtraction.m
+ComsolExtraction2.m
+CylindricalMask.m
+Field
+Field.tex
+FieldAndcoil
+GraphSHD
+Integrale Norme associated Legendre function.nb
+OrderAssociatedLegendre.m
+Point.tex
+Polynomial order of Associtaed legendre poly.nb
+SHDDrive2.tex
+Snm.m
+TestQuadrature.m
+Wire
+Yc.m
+YcTild.m
+Ys.m
+YsTild.m
+coreFunctions/RebuildField.m
+coreFunctions/RebuildField2.m
+coreFunctions/RebuildField2bis.m
+coreFunctions/RebuildField3.m
+coreFunctions/createTargetPointGaussLegendre.m
+coreFunctions/createTargetPointGaussLegendreAndRectangle.m
+coreFunctions/getSphericalHarmonicsCoefficient.m
+coreFunctions/getSphericalHarmonicsCoefficientMeasure.m
+coreFunctions/getSphericalHarmonicsCoefficientMeasure2.m
+coreFunctions/getSphericalHarmonicsCoefficientMeasure3.m
+coreFunctions/getSphericalHarmonicsCoefficientMeasure4.m
+coreFunctions/getSphericalHarmonicsCoefficientMeasure5.m
+coreFunctions/getSphericalHarmonicsCoefficientMeasure6.m
+coreFunctions/getSphericalHarmonicsCoefficientWire.m
+data/1.jpg
+data/161.jpg
+data/4th order.bmp
+data/8.jpg
+data/Anime.synctex.gz
+data/Basic Legendre.jpg
+data/OrderAssociatedLegendrePolynomial.bmp
+data/OrderAssociatedLegendrePolynomial_mn.bmp
+data/Spherical harmonics 2.jpg
+data/Spherical harmonics.jpg
+data/data.jpg
+data/picture1.jpg
+displayFunctions/Display2DField.m
+sphericalHarmonicsCoefficient.m
+MainOld.m
