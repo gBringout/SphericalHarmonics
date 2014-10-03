@@ -182,12 +182,12 @@ elseif type == 2
 
 
     axesHandles = get(gcf, 'children');
-    for i=1:size(axesHandles,1)
+    for i=1:3%size(axesHandles,1)
         xlabel(axesHandles(i),'mth order');
-        ylabel(axesHandles(i),sprintf('abs(Maximum amplitude) \\10^{-%i} T.A^{-1}',log10(scaling)));
+        ylabel(axesHandles(i),sprintf('abs(Maximum amplitude) / 10^{%i} T.A^{-1}',-log10(scaling)));
         set(axesHandles(i),'Ylim',[10^-3 10^3],'XTick',1:50,'XTickLabel',x);
+        
         %legend(legendText,'Location','SouthEast')
-
         %xlim([-(nMax+1) (yMax+1)])
     end
 end
