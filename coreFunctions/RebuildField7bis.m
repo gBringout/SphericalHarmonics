@@ -1,7 +1,19 @@
 function [ B ] = RebuildField7bis(bc,bs,rhoReference,rk,mode )
-
+% Calculate the fields at given position
+% the list rk gives each position
 numberDregree = max(size(bc(1).coefficient,2),size(bs(1).coefficient,2))-1;
 numberOrder = max(size(bc(1).coefficient,1),size(bs(1).coefficient,1))-1;
+
+if size(rk,2) <6
+    for i=1:size(rk,1)
+        x = rk(i,1);
+        y = rk(i,2);
+        z = rk(i,3);
+        rk(i,4) = sqrt(x^2+y^2+z^2); % rho
+        rk(i,6) = acos(z/rk(i,4)); % theta
+        rk(i,5) = atan2(y,x); % phi
+    end
+end
 
 B = zeros(3,size(rk,1));
 for i=1:size(rk,1)
