@@ -1,14 +1,25 @@
 function [ B ] = RebuildField7(bc,bs,rhoReference,x,y,z,mode )
-
+% Calculate the fields on a grid
+% define by the vector x,y and z
 numberDregree = max(size(bc(1).coefficient,2),size(bs(1).coefficient,2));
 
+[TF,~] = license('checkout', 'Distrib_Computing_Toolbox');
+numWorkers = 0;
+if TF
+    schd = findResource('scheduler', 'configuration', 'local');
+    numWorkers = schd.ClusterSize;
+end
+if matlabpool('size') == 0  && TF && numWorkers >1
+    % checking to see if the pool is already open and of we have the licence
+    matlabpool open
+end
 
 B = zeros(3,size(x,2),size(y,2),size(z,2));
 Bx = zeros(size(x,2),size(y,2),size(z,2));
 By = zeros(size(x,2),size(y,2),size(z,2));
 Bz = zeros(size(x,2),size(y,2),size(z,2));
-%parfor i=1:size(x,2)
-for i=1:size(x,2)
+parfor i=1:size(x,2)
+%for i=1:size(x,2)
     Tempx = zeros(size(y,2),size(z,2));
     Tempy = zeros(size(y,2),size(z,2));
     Tempz = zeros(size(y,2),size(z,2));
