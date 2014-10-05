@@ -1,14 +1,9 @@
-function [] = displaySHC(bc,bs,type,scaling)
-% We have 2 type of graphs. The pyramide or the bar
+function [] = displaySHC(bc,bs,type)
+% We have 2 type of graphs. The pyramide or the line
 
 if nargin<3
     type = 1; % This is the pyramid
-    scaling = 10^-3;
 end
-if nargin <4
-    scaling = 10^-3;
-end
-    
 
 if type ==1
 %% Try to build a represnetation of the SHC as:
@@ -48,7 +43,7 @@ if type ==1
     subplot(1,3,1)
     legendText='';
     for n=0:nMax
-        barHandle = bar(-nMax:nMax, scaling*abs(bx(nMax-n+1,:)));
+        barHandle = bar(-nMax:nMax, 10^3*abs(bx(nMax-n+1,:)));
         set(gca,'YScale','log')
         set(barHandle,'BarWidth',(nMax-n+1)*(1/(nMax+1))*K, 'FaceColor', graphColor(n+1,:), 'EdgeColor', graphColor(n+1,:));
         if n<10
@@ -62,7 +57,7 @@ if type ==1
 
     subplot(1,3,2)
     for n=0:nMax
-        barHandle = bar(-nMax:nMax, scaling*abs(by(nMax-n+1,:))); 
+        barHandle = bar(-nMax:nMax, 10^3*abs(by(nMax-n+1,:))); 
         set(gca,'YScale','log')
         set(barHandle,'BarWidth',(nMax-n+1)*(1/(nMax+1))*K, 'FaceColor', graphColor(n+1,:), 'EdgeColor', graphColor(n+1,:));
         hold all;
@@ -71,7 +66,7 @@ if type ==1
 
     subplot(1,3,3)
     for n=0:nMax
-        barHandle = bar(-nMax:nMax, scaling*abs(bz(nMax-n+1,:))); 
+        barHandle = bar(-nMax:nMax, 10^3*abs(bz(nMax-n+1,:))); 
         set(gca,'YScale','log')
         set(barHandle,'BarWidth',(nMax-n+1)*(1/(nMax+1))*K, 'FaceColor', graphColor(n+1,:), 'EdgeColor', graphColor(n+1,:));
         hold all;
@@ -88,10 +83,9 @@ if type ==1
 
         %xlim([-(nMax+1) (yMax+1)])
     end
-elseif type == 2
+else
     %% Try to build a represnetation of the SHC as:
     % bc00 bs11 bc10 bc11 bs22 bs21 bc20 bc21 bc22
-    % with a ligne at  1 mT
     
     nMax = size(bc(1,1).coefficient,1)-1;
     bx = zeros(nMax+1,2*nMax+1);
@@ -127,16 +121,9 @@ elseif type == 2
     for n=0:nMax
         for m=-n:n
             point = point+1;
-            barHandle = bar(point,scaling*abs(bx(point)));
+            barHandle = bar(point,10^3*abs(bx(point)));
             hold all
-            
-            if bx(point)>0
-                set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
-            else
-                set(barHandle,'FaceColor', 0.25*colorBar(point,:), 'EdgeColor', colorBar(point,:));
-                set(barHandle,'LineWidth',2);
-            end
-            %applyhatch_pluscolor(barHandle, '\-x.', 'rkbk');
+            set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
         end
     end
     set(gca,'YScale','log')
@@ -147,15 +134,9 @@ elseif type == 2
     for n=0:nMax
         for m=-n:n
             point = point+1;
-            barHandle = bar(point,scaling*abs(by(point)));
+            barHandle = bar(point,10^3*abs(by(point)));
             hold all
-            
-            if bx(point)>0
-                set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
-            else
-                set(barHandle,'FaceColor', 0.25*colorBar(point,:), 'EdgeColor', colorBar(point,:));
-                set(barHandle,'LineWidth',2);
-            end
+            set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
         end
     end
     set(gca,'YScale','log')
@@ -166,15 +147,9 @@ elseif type == 2
     for n=0:nMax
         for m=-n:n
             point = point+1;
-            barHandle = bar(point,scaling*abs(bz(point)));
+            barHandle = bar(point,10^3*abs(bz(point)));
             hold all
-            
-            if bx(point)>0
-                set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
-            else
-                set(barHandle,'FaceColor', 0.25*colorBar(point,:), 'EdgeColor', colorBar(point,:));
-                set(barHandle,'LineWidth',2);
-            end
+            set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
         end
     end
     set(gca,'YScale','log')
@@ -182,13 +157,12 @@ elseif type == 2
 
 
     axesHandles = get(gcf, 'children');
-    for i=1:3%size(axesHandles,1)
+    for i=1:size(axesHandles,1)
         xlabel(axesHandles(i),'mth order');
-        ylabel(axesHandles(i),sprintf('abs(Maximum amplitude) \10^(-%i) T.A^(-1)',log10(scaling)));
-        set(axesHandles(i),'Ylim',[10^-3 10^3],'XTick',1:50,'XTickLabel',x);
-        
+        ylabel(axesHandles(i),'abs(Maximum amplitude) \\10^{-3} T.A^{-1}');
+        set(axesHandles(i),'XTick',1:50,'Ylim',[10^-4 10^2],'XTickLabel',x);
         %legend(legendText,'Location','SouthEast')
+
         %xlim([-(nMax+1) (yMax+1)])
     end
-end
     
