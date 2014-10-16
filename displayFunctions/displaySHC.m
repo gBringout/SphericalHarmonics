@@ -58,7 +58,7 @@ if type ==1
         end
         hold all;
     end
-    title('Bx coefficient')
+    title('B_x coefficient')
 
     subplot(1,3,2)
     for n=0:nMax
@@ -67,7 +67,7 @@ if type ==1
         set(barHandle,'BarWidth',(nMax-n+1)*(1/(nMax+1))*K, 'FaceColor', graphColor(n+1,:), 'EdgeColor', graphColor(n+1,:));
         hold all;
     end
-    title('By coefficient')
+    title('B_y coefficient')
 
     subplot(1,3,3)
     for n=0:nMax
@@ -76,7 +76,7 @@ if type ==1
         set(barHandle,'BarWidth',(nMax-n+1)*(1/(nMax+1))*K, 'FaceColor', graphColor(n+1,:), 'EdgeColor', graphColor(n+1,:));
         hold all;
     end
-    title('Bz coefficient')
+    title('B_z coefficient')
 
 
     axesHandles = get(gcf, 'children');
@@ -140,7 +140,7 @@ elseif type == 2
         end
     end
     set(gca,'YScale','log')
-    title('Bx coefficient')
+    title('B_x coefficient')
 
     subplot(3,1,2)
     point = 0;
@@ -159,7 +159,7 @@ elseif type == 2
         end
     end
     set(gca,'YScale','log')
-    title('By coefficient')
+    title('B_y coefficient')
 
     subplot(3,1,3)
     point = 0;
@@ -178,14 +178,15 @@ elseif type == 2
         end
     end
     set(gca,'YScale','log')
-    title('Bz coefficient')
+    title('B_z coefficient')
 
 
     axesHandles = get(gcf, 'children');
     for i=1:3%size(axesHandles,1)
         xlabel(axesHandles(i),'mth order');
         ylabel(axesHandles(i),sprintf('abs(Maximum amplitude) / 10^{%i} T.A^{-1}',-log10(scaling)));
-        set(axesHandles(i),'Ylim',[10^-3 10^3],'XTick',1:50,'XTickLabel',x);
+        set(axesHandles(i),'Ylim',[10^-2 10^2],'XTick',1:75,'XTickLabel',x);
+        xlim([0 50])
         
         %legend(legendText,'Location','SouthEast')
         %xlim([-(nMax+1) (yMax+1)])
