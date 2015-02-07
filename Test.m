@@ -1,7 +1,9 @@
 %% Ideal field + Gaus & Rectangle
+clear all
+close all
 
-addpath('.\coreFunctions');
-addpath('.\displayFunctions');
+addpath(genpath(fullfile('.')))
+
 degreeMax = 7;
 orderMax = degreeMax; % We try to get all the order for each degree
 rhoReference = 1;

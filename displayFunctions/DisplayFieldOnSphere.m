@@ -1,5 +1,5 @@
-function [ ] = DisplayFieldOnSphere( B,rk,titleGraph )
-%Display2DField Display the absolute value and the components of a field in a plane
+function [ ] = displayFieldOnSphere( B,rk,titleGraph )
+%display2DField Display the absolute value and the components of a field in a plane
 %   Detailed explanation goes here
 if nargin<3
     titleGraph = 'Empty Title';
