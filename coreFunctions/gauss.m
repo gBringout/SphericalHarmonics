@@ -1,6 +1,8 @@
 function [x, w] = gauss(n)
 % Generates the abscissa and weights for a Gauss-Legendre quadrature.
 % Reference:  Numerical Recipes in Fortran 77, Cornell press.
+% Source: http://mathworks.com/matlabcentral/fileexchange/7499-gaussleg/content/gaussleg.m
+
 x = zeros(n,1);                                           % Preallocations.
 w = x;
 m = (n+1)/2;
