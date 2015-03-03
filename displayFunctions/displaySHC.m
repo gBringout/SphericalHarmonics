@@ -150,7 +150,7 @@ elseif type == 2
             barHandle = bar(point,scaling*abs(by(point)));
             hold all
             
-            if bx(point)>0
+            if by(point)>0
                 set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
             else
                 set(barHandle,'FaceColor', 0.25*colorBar(point,:), 'EdgeColor', colorBar(point,:));
@@ -169,7 +169,7 @@ elseif type == 2
             barHandle = bar(point,scaling*abs(bz(point)));
             hold all
             
-            if bx(point)>0
+            if bz(point)>0
                 set(barHandle,'FaceColor', colorBar(point,:), 'EdgeColor', colorBar(point,:));
             else
                 set(barHandle,'FaceColor', 0.25*colorBar(point,:), 'EdgeColor', colorBar(point,:));
