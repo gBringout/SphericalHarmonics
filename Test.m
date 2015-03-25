@@ -16,6 +16,9 @@ rhoReference = 1; % set the reference radius to 1 meter
 % more precise
 rk = createTargetPointGaussLegendreAndRectangle7(rhoReference,degreeMax,orderMax);
 
+figure
+plot3(rk(:,1),rk(:,2),rk(:,3),'*');
+axis equal
 
 %% the bc and bs coefficietn are inizialized for each field direction
 bc(1).coefficient = zeros(degreeMax+1,orderMax+1);
