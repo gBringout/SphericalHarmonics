@@ -30,7 +30,7 @@ bs(3).coefficient = zeros(degreeMax+1,orderMax+1);
 
 % we decide to try with a field topology as:
 % this is arbitrary
-bc(1).coefficient(1,1) = 0.78;
+bc(1).coefficient(1,1) = -0.78;
 bs(1).coefficient(2,2) = 1;
 bc(1).coefficient(3,1) = 2;
 bc(2).coefficient(5,1) = pi;
