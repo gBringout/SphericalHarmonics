@@ -3,15 +3,26 @@ function [ B ] = RebuildField7(bc,bs,rhoReference,x,y,z,mode )
 % define by the vector x,y and z
 numberDregree = max(size(bc(1).coefficient,2),size(bs(1).coefficient,2));
 
-[TF,~] = license('checkout', 'Distrib_Computing_Toolbox');
-numWorkers = 0;
-if TF
-    schd = findResource('scheduler', 'configuration', 'local');
-    numWorkers = schd.ClusterSize;
-end
-if matlabpool('size') == 0  && TF && numWorkers >1
-    % checking to see if the pool is already open and of we have the licence
-    matlabpool open
+%activate the paralle function
+matlabVersion = version;
+matlabVersion = str2num(matlabVersion(1:3));
+if matlabVersion < 8.2
+    [TF,~] = license('checkout', 'Distrib_Computing_Toolbox');
+    if TF
+        schd = findResource('scheduler', 'configuration', 'local');
+        numWorkers = schd.ClusterSize;
+    end
+
+    if matlabpool('size') == 0  && TF && numWorkers >1
+        % checking to see if the pool is already open and of we have the licence
+        % and at least 2 cores
+        matlabpool open
+    end
+elseif matlabVersion >= 8.2 
+    poolobj = gcp('nocreate'); % If no pool, do not create new one.
+	if isempty(poolobj)
+		parpool;
+    end
 end
 
 B = zeros(3,size(x,2),size(y,2),size(z,2));
