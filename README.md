@@ -11,4 +11,4 @@ Then spherical harmonics coefficient can be calculated in order to describe the 
 ![Alt text](/examples/SHC_driveX.jpg?raw=true "The SH coefficient")
 On this graph, each colour represent an degree. A darker colour indicate a negative value. This is the coefficients associated with a "homogeneous" coil (or drive coil in [Magnetic Particle Imaging](http://en.wikipedia.org/wiki/Magnetic_particle_imaging)).
 
-For further information, please refer yourself to [this publication](http://www.gael-bringout.com/public/Bringout%202014%20-%20a%20robust%20and%20compact%20representation%20for%20magnetics%20fields%20in%20magnetic%20particle%20imaging.pdf) and the associate references.
+For further information, please refer yourself to [the publication](http://www.gael-bringout.com/public/Bringout%202014%20-%20a%20robust%20and%20compact%20representation%20for%20magnetics%20fields%20in%20magnetic%20particle%20imaging.pdf) published [here](http://dx.doi.org/10.1515/bmt-2014-5009) and the associate references.
